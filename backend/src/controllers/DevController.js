@@ -38,5 +38,18 @@ module.exports = {
 			});
 		}
 		return response.json(dev);
-	}
+    },
+    
+    async delete(request, response) {
+        const { github_username } = request.body;
+
+        let dev = await Dev.findOne({ github_username });
+        
+        if(dev) {
+            // const apiResponse = await axios.delete(`https://api.github.com/users/${github_username}`).then(res => console.log(res.data));
+            const apiResponse = await api.delete('/devs', github_username);
+            console.log(apiResponse.data);
+        }
+		return response.json(dev);
+    }
 };

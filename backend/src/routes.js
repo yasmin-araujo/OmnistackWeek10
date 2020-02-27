@@ -4,11 +4,14 @@ const SearchController = require('./controllers/SearchController');
 
 const routes = Router();
 
-//Mostrar todos os devs
+// Mostrar todos os devs
 routes.get('/devs', DevController.index);
 
 // Cadastrar um dev
 routes.post('/devs', DevController.store);
+
+// Deletar um dev
+routes.delete('/devs', DevController.delete);
 
 routes.get('/search', SearchController.index);
 
